@@ -1,7 +1,7 @@
 // src/index.ts
 import express, { Request, Response } from "express";
 import { Controller } from "./controllers";
-import { mockUpData } from "./MockUpData.json";
+import { mockUpData } from "./MockupData.json";
 import cors from "cors";
 import { MockUpData, TestResult } from "./type";
 
