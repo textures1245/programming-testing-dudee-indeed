@@ -5,13 +5,18 @@ import { mockUpData } from "./MockupData.json";
 import cors from "cors";
 import { MockUpData, TestResult } from "./type";
 
+import path from "path";
+
 const app = express();
 const port = 3000;
 
 app.use(cors());
 
+app.set("view engine", "ejs");
+app.set("views", path.join(__dirname, "views"));
+
 app.get("/", (req: Request, res: Response) => {
-  res.send("Hello! This is a API server for testing environment.");
+  res.render("index");
 });
 
 //-  routes for testing environment
