@@ -1,0 +1,77 @@
+<!-- views/index.ejs -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Programming Testing - Dudee Indeed</title>
+  </head>
+  <style>
+    * {
+        text-align: center;
+    }
+    .flex-container-center {
+      display: flex;
+        flex-direction: column;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .flex-center {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    
+    .flex-center button {
+        align-items: center;
+    }
+  </style>
+  <body>
+    <main class="flex-container-center">
+      <div class="flex-center">
+        <h2>Programming Testing - Dudee Indeed</h2> 
+        <h3>Please see the console for the result when you already press the button.</h3>
+      <div>
+          <hr>
+          <div class="flex-center">
+            <h4>Sorting Number</h4>
+              <button  onclick="onFetchingAPI('sorted-number')"  id="button-1">Result</button>
+              
+          </div>
+          <div class="flex-center">
+            <h4>Employee Display</h4>
+              <button  onclick="onFetchingAPI('display')" id="button-2">Result</button>
+          </div>
+          <div class="flex-center">
+            <h3>Special Programming Testing - Dudee Indeed</h3>
+          <div>
+            <hr>
+          <div class="flex-center">
+                <h4>Mapped MockupData</h4>
+              <button onclick="onFetchingAPI('special')" id="button-3">Result</button>
+          </div>
+    </main>
+  </body>
+  <script>
+    function onFetchingAPI(endpoint) {
+      const routeType = ['display' , 'sorted-number' , 'special']
+      if (!routeType.includes(endpoint)) {
+        throw new Error('Route is not found')
+      }
+
+      fetch(`/${endpoint}`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      })
+        .then((response) => response.json())
+        .then((data) => console.log(data))
+        .catch((error) => {
+          console.error("Error:", error);
+        });
+    }
+  </script>
+</html>
