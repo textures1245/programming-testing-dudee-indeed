@@ -22,10 +22,15 @@ app.get("/", (req: Request, res: Response) => {
 //-  routes for testing environment
 //! 1
 app.post("/sorted-number", (req: Request, res: Response) => {
-  let input = [2, 3, 4, 4, 34, 6, 7, 2, 3, 7, 8, 8, 8, 7, 9, 10, 41, 8];
+  const input = [2, 3, 4, 4, 34, 6, 7, 2, 3, 7, 8, 8, 8, 7, 9, 10, 41, 8];
   const output = Controller.sortArrayByFrequencyAndValue(input);
+
+  // since the input is immutable by the method, I create a new array to store for the original input
+  const immutableInput = [
+    2, 3, 4, 4, 34, 6, 7, 2, 3, 7, 8, 8, 8, 7, 9, 10, 41, 8,
+  ];
   res.json({
-    input,
+    input: immutableInput,
     output,
   } as TestResult);
 });
